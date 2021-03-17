@@ -1,10 +1,4 @@
-# RTS labs
-
-## Lab 1: 
-
-### Code
-```typescript
-function fermatFactors(n: number): number[] {
+export default function fermatFactors(n: number): number[] {
     if (n <= 0)
         return [n]
 
@@ -29,8 +23,3 @@ function fermatFactors(n: number): number[] {
 
     return [a - b, a + b]
 }
-```
-### Screenshots
-![screenshot1](./examples/fermatFactors/screenshot1.jpeg)
-
-![screenshot2](./examples/fermatFactors/screenshot2.jpeg)
