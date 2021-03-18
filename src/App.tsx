@@ -5,6 +5,7 @@ import fermatFactors from "./lib/fermatFactors";
 function App() {
     const [number, setNumber] = useState<number>(0)
     const [factors, setFactors] = useState<Array<number>>([])
+    const [foundIn, setFoundIn] = useState<number>(0)
 
     return (
         <div className="App">
@@ -19,8 +20,14 @@ function App() {
                     setNumber(Number.parseInt(target.value))
                 }
             />
-            <button onClick={() => setFactors(fermatFactors(number))}>Calculate</button>
+            <button onClick={() => {
+                const {factors, foundIn} = fermatFactors(number)
+                setFoundIn(foundIn)
+                setFactors(factors)
+            }}>Calculate
+            </button>
             {factors.join(' * ')}
+            {foundIn && <span>found in: {foundIn} iterations</span>}
         </div>
     );
 }

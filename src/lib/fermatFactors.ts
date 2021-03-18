@@ -1,17 +1,18 @@
-export default function fermatFactors(n: number): number[] {
+export default function fermatFactors(n: number): { foundIn: number; factors: number[] } {
+    let foundIn = 1
     if (n <= 0)
-        return [n]
+        return {factors: [n], foundIn}
 
     if (!(n % 2))
-        return [n / 2, 2]
+        return {factors: [n / 2, 2], foundIn}
 
     let a = Math.ceil(Math.sqrt(n))
 
     if (a * a === n)
-        return [a, a]
+        return {factors: [a, a], foundIn}
 
     let b = 0
-    while (1) {
+    for (; foundIn > 0; foundIn++) {
         const c = a * a - n
         b = Math.floor(Math.sqrt(c))
 
@@ -21,5 +22,5 @@ export default function fermatFactors(n: number): number[] {
             a += 1
     }
 
-    return [a - b, a + b]
+    return {factors: [a - b, a + b], foundIn}
 }

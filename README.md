@@ -34,3 +34,5 @@ function fermatFactors(n: number): number[] {
 ![screenshot1](./examples/fermatFactors/screenshot1.jpeg)
 
 ![screenshot2](./examples/fermatFactors/screenshot2.jpeg)
+
+![screenshot3](./examples/fermatFactors/screenshot3.jpeg)
