@@ -1,8 +1,10 @@
 # RTS labs
 
-## Lab 1: 
+<details>
+  <summary><b>Lab 1</b> <i>"Fermat's Factors"</i></summary>
 
 ### Code
+
 ```typescript
 function fermatFactors(n: number): number[] {
     if (n <= 0)
@@ -30,9 +32,13 @@ function fermatFactors(n: number): number[] {
     return [a - b, a + b]
 }
 ```
+
 ### Screenshots
+
 ![screenshot1](./examples/fermatFactors/screenshot1.jpeg)
 
 ![screenshot2](./examples/fermatFactors/screenshot2.jpeg)
 
 ![screenshot3](./examples/fermatFactors/screenshot3.jpeg)
+
+</details> 
