@@ -11,7 +11,7 @@ nav {
     background-color: #1F1F1F;
 
     display: grid;
-    grid-template: 1fr / repeat(2, 1fr);
+    grid-template: 1fr / repeat(3, 1fr);
 }
 
 nav > a {
@@ -108,6 +108,20 @@ nav svg {
     color: white;
 }
 
-.FermatFactors {
+.Perceptron,
+.GeneticDiophantus {
     flex-direction: row;
+}
+
+.GeneticDiophantus h4 {
+    margin: 0;
+    height: 48px;
+    line-height: 48px;
+}
+
+.GeneticDiophantus input {
+    padding: 0 0 0 8px;
+    width: 32px;
+    height: 32px;
+    margin: 0;
 }

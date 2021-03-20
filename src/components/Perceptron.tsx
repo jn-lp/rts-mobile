@@ -8,7 +8,7 @@ function Perceptron() {
     const [perceptron, setPerceptron] = useState<PerceptronClass>()
 
     return (
-        <div className="FermatFactors">
+        <div className="Perceptron">
             <header className="App__Header">
                 {accuracy ? `Accuracy: ${accuracy}` : "Perceptron"}
             </header>
