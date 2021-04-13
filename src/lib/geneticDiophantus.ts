@@ -8,9 +8,6 @@ class Chromosome {
     protected task: number[] = []
     protected target: number = 0
 
-    private calc = () =>
-        this.genes.reduce((a, gene, i) => a + (gene * this.task[i]))
-
     constructor(opts: {
         genes: number[],
         task: number[],
@@ -31,6 +28,9 @@ class Chromosome {
         return child
     }
 
+    private calc = () =>
+        this.genes.reduce((a, gene, i) => a + (gene * this.task[i]))
+
     private calcFitness() {
         this.fitness = Math.abs(this.target - this.calc())
     }
@@ -42,12 +42,13 @@ class Chromosome {
 
 class GeneticDiophantus {
     public population: Chromosome[] = []
+    public iterations: number = 0
 
-    constructor({task, target}: { task: number[], target: number }) {
+    constructor({task, target, populationSize}: { task: number[], target: number, populationSize?: number }) {
         const {length} = task
         this.population =
             Array.from(
-                {length},
+                {length: populationSize || length},
                 () => new Chromosome({
                     genes: Array.from({length}, () => random(1, target / 2)),
                     task: task,
@@ -56,8 +57,9 @@ class GeneticDiophantus {
             )
     }
 
-    public solve() {
-        while (true) {
+    public solve(solveFor: number = Infinity): number[] | void {
+        while (solveFor--) {
+            ++this.iterations
             const chromosome = this.crossover()
             if (chromosome)
                 return chromosome.genes
@@ -85,5 +87,20 @@ class GeneticDiophantus {
         this.population = children
     }
 }
+
+(() => {
+    const POPULATION_SIZE = 3
+
+    const test: { [size: number]: any } = {};
+    for (let size = POPULATION_SIZE; size <= POPULATION_SIZE * 2; size++) {
+        const start = new Date().getTime();
+
+        (new GeneticDiophantus({task: [1, 2, 3, 4], target: 20, populationSize: size})).solve()
+
+        test[size] = new Date().getTime() - start;
+    }
+
+    console.table(test)
+})()
 
 export default GeneticDiophantus
